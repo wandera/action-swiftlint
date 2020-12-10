@@ -26,7 +26,7 @@ fi
 
 if ! ${DIFF_BASE+false};
 then
-	changedFiles=$(git --no-pager diff --name-only --relative FETCH_HEAD $(git merge-base FETCH_HEAD $DIFF_BASE) -- '*.swift' | escapeSpacesInFilenames)
+	changedFiles=$(git --no-pager diff --name-only -z --relative FETCH_HEAD $(git merge-base FETCH_HEAD $DIFF_BASE) -- '*.swift' | escapeSpacesInFilenames)
 
 	if [ -z "$changedFiles" ]
 	then
